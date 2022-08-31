@@ -10,24 +10,30 @@ develop in a text editor of choice and build from the command line.
   - `all`       Builds the target ELF binary.
   - `program`   Flashes the ELF binary to the target board.
   - `debug`     Launches GDB and connects to the target.
-  - `cube`      Downloads the most recent STM32Cube version from the ST website and extract it to `cube`.
-  - `template`  Copies a simple example/template, startup code and a linker script from the `cube` to your `src` directory.
+  - `cube`      Downloads the most recent STM32Cube version from the ST github and extract it to `contrib/cube_f4`.
+  - `template`  Copies a simple example/template, startup code and a linker script from the `contrib/cube_f4` to your `src` directory.
   - `clean`     Remove all files and directories which have been created during the compilation.
 
 ## Installing
 
 Before building, you must install the GNU compiler toolchain.
-I'm using the the `gnu-none-eabi` triple shipped with recent Debian and Ubuntu versions:
-
+- I'm using the the `gnu-none-eabi` triple shipped with recent Debian and Ubuntu versions:
+    ```bash
     sudo apt-get install gcc-arm-none-eabi binutils-arm-none-eabi
-
-You also might want to install some other libraries and debuggers:
-
+    ```
+- You also might want to install some other libraries and debuggers:
+    ```bash
     sudo apt-get install openocd gdb-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
+    ```
+
+
 
 ## Source code
 
 Your source code has to be put in the `src` directory.
+
+Includes need to be put into the `inc` directory.
+
 Dont forget to add your source files in the Makefile.
 
 ## Programming and debugging code on the board

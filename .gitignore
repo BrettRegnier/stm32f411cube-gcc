@@ -7,12 +7,9 @@
 *.lst
 *.map
 
-# Makefile dependencies
-dep/
+# build directories
+build/
 
-# Object directories
-obj/
-
-# Third-Party firmware from ST
-cube/
+# library directories
+contrib/
 

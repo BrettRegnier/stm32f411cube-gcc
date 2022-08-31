@@ -46,7 +46,7 @@ LDFILE_DIR = ${CONFIG_DIR}/$(MCU_LC).ld
 #LDFILE     = $(EXAMPLE)/TrueSTUDIO/$(BOARD_UC)/$(MCU_UC)_FLASH.ld
 
 # Your C++ files from the /src directory
-SRCS_CC	   = Keyboard.cc
+SRCS_CC	   =
 
 # Your C files from the /src directory
 SRCS_C      = main.c

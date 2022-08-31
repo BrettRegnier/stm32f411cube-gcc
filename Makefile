@@ -28,7 +28,7 @@ BOARD_UC   = STM32F411E-Discovery
 BOARD_LC   = stm32f411e_discovery
 BSP_BASE   = $(BOARD_LC)
 
-OCDFLAGS   = -f board/stm32f4discovery.cfg
+OCDFLAGS   = -f interface/stlink-v2.cfg -f target/stm32f4x.cfg
 GDBFLAGS   =
 
 #EXAMPLE   = Templates
@@ -185,10 +185,10 @@ $(TARGET).bin: $(TARGET).elf
 	$Q$(OBJCOPY) -O binary $< $@
 
 openocd:
-	$(OCD) -s $(OCD_DIR) $(OCDFLAGS)
+	$(OCD) $(OCDFLAGS)
 
 program: all
-	$(OCD) -s $(OCD_DIR) $(OCDFLAGS) -c "program $(TARGET).elf verify reset"
+	$(OCD) $(OCDFLAGS) -c "program $(TARGET).elf verify reset"
 
 debug:
 	@if ! nc -z localhost 3333; then \

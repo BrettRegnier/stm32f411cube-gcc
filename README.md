@@ -11,7 +11,7 @@ develop in a text editor of choice and build from the command line.
   - `program`   Flashes the ELF binary to the target board.
   - `debug`     Launches GDB and connects to the target.
   - `cube`      Downloads the most recent STM32Cube version from the ST github and extract it to `contrib/cube_f4`.
-  - `template`  Copies a simple example/template, startup code and a linker script from the `contrib/cube_f4` to your `src` directory.
+  - `template`  Copies a simple example/template, startup code and a linker script from the `contrib/cube_f4` to your `config` directory.
   - `clean`     Remove all files and directories which have been created during the compilation.
 
 ## Installing
@@ -24,8 +24,8 @@ Before building, you must install the GNU compiler toolchain.
 - You also might want to install some other libraries and debuggers:
     ```bash
     sudo apt-get install openocd gdb-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib
-    ```
-
+    ```  
+- Then run ```make template```. This will download the STM32 HAL library and setup the src, inc, and config folders.
 
 
 ## Source code

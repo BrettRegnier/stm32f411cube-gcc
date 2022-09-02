@@ -46,12 +46,13 @@ LDFILE_DIR = ${CONFIG_DIR}/$(MCU_LC).ld
 #LDFILE     = $(EXAMPLE)/TrueSTUDIO/$(BOARD_UC)/$(MCU_UC)_FLASH.ld
 
 # Your C++ files from the /src directory
-SRCS_CC	   =
+SRCS_CC	   = $(shell find src -name '*.cc' -exec basename {} \;)
+# SOURCES := $(shell find $(SOURCEDIR) -name '*.c')
 
 # Your C files from the /src directory
-SRCS_C      = main.c
-SRCS_C     += system_$(MCU_FAMILY).c
-SRCS_C     += stm32f4xx_it.c
+SRCS_C      = $(shell find src -name '*.c' -exec basename {} \;)
+# SRCS_C     += system_$(MCU_FAMILY).c
+# SRCS_C     += stm32f4xx_it.c
 
 # Basic HAL libraries
 SRCS_C     += stm32f4xx_hal_rcc.c stm32f4xx_hal_rcc_ex.c stm32f4xx_hal.c stm32f4xx_hal_cortex.c stm32f4xx_hal_gpio.c stm32f4xx_hal_pwr_ex.c $(BSP_BASE).c
@@ -188,7 +189,7 @@ openocd:
 	$(OCD) $(OCDFLAGS)
 
 program: all
-	$(OCD) $(OCDFLAGS) -c "program $(TARGET).elf verify reset"
+	$(OCD) $(OCDFLAGS) -c "program $(TARGET).elf verify reset exit"
 
 debug:
 	@if ! nc -z localhost 3333; then \
